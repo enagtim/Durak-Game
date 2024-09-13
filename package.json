@@ -13,7 +13,6 @@
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "live-server": "^1.2.2",
-    "rollup": "^4.21.3",
-    "rollup-plugin-css-only": "^4.5.2"
+    "rollup": "^4.21.3"
   }
 }
