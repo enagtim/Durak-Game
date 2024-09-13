@@ -1,0 +1,19 @@
+{
+  "name": "durak-game",
+  "version": "1.0.0",
+  "description": "Card game for Russian people",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "rollup -c --watch",
+    "start": "live-server --open=./index.html --watch=dist"
+  },
+  "author": "Nikita Kaberov",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "live-server": "^1.2.2",
+    "rollup": "^4.21.3",
+    "rollup-plugin-css-only": "^4.5.2"
+  }
+}
