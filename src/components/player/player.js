@@ -6,23 +6,23 @@ export class Player {
     addCardHand(card) {
         return this.hand.push(card);
     }
-    // Метод для удаления карты из руки
     deleteCard(card) {
-        // Логика удаления карты
+        const index = this.hand.findIndex(handCard => handCard.rank === card.rank && handCard.suit === card.suit);
+        if (index !== -1) {
+            this.hand.splice(index, 1);
+        } else {
+            throw new Error('Карта не найдена!');
+        }
     }
-
-    // Метод для проверки наличия карты
-    hasCard(card) {
-        // Логика проверки наличия карты
+    checkHasCard(card) {
+        const findCard = this.hand.findIndex(handCard => handCard.rank === card.rank && handCard.suit === card.suit);
+        if (findCard !== 1) {
+            return true;
+        } else {
+            throw new Error('Такой карты у вас нет!!');
+        }
     }
-
-    // Метод для получения количества карт
-    getCardCount() {
-        // Метод получения количества карт
-    }
-
-    // Метод для отображения карт
-    showHand() {
-        // Метод отображения карт
+    getCard() {
+        return `У игрока ${this.name} количество карта : ${this.hand.length}`;
     }
 }

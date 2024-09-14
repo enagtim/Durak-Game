@@ -1,16 +1,17 @@
 import { Card } from "../card/card";
 export class Deck {
     constructor() {
-        this.siuts = ['Черви', 'Буби', 'Пики', 'Крести'];
-        this.ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'В', 'Д', 'K', 'Т'];
+        this.suits = ['Черви', 'Буби', 'Пики', 'Крести'];
+        this.ranks = ['6', '7', '8', '9', '10', 'Валет', 'Дама', 'Король', 'Туз'];
         this.deck = [];
     };
     createDeck() {
-        for (siut of this.siuts) {
-            for (rank of this.ranks) {
-                this.deck.push(new Card(rank, siut));
+        for (const suit of this.suits) {
+            for (const rank of this.ranks) {
+                this.deck.push(new Card(rank, suit));
             }
         }
+        return this.deck;
     };
     shuffleDeck() {
         for (let i = this.deck.length - 1; i > 0; i--) {
@@ -19,8 +20,17 @@ export class Deck {
         }
         return this.deck;
     };
-    dealingСards() {
-        // Раздача карт
-        // проверку на наличие карт в колоде.
+    dealingСards(numPlayers, numCards) {
+        if (this.deck.length < numPlayers * numCards) {
+            throw new Error('В колоде недостаточно карт для игры в Дурака!!')
+        };
+        const players = [];
+        for (let i = 0; i < numPlayers; i++) {
+            for (let j = 0; i < numCards; j++) {
+                const card = this.deck.pop();
+                players.push(card)
+            }
+        }
+        return players;
     }
 }

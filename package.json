@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Card game for Russian people",
   "main": "dist/bundle.js",
+  "type": "module",
   "scripts": {
     "build": "rollup -c --watch",
     "start": "live-server --open=./index.html --watch=dist"

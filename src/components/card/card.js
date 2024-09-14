@@ -1,25 +1,13 @@
 export class Card {
     constructor(rank, suit) {
-        this.rank = rank;
-        this.suit = suit;
+        this.rank = rank
+        this.suit = suit
     }
-    get suit() {
-        return this.suit;
-    }
-    get rank() {
+    getRank() {
         return this.rank;
-    }
-    toString() {
-        return `${this.rank} ${this.suit}`;
     }
     getValueRank() {
         switch (this.rank) {
-            case '2':
-                return 3;
-            case '4':
-                return 4;
-            case '5':
-                return 5;
             case '6':
                 return 6;
             case '7':
@@ -30,14 +18,24 @@ export class Card {
                 return 9;
             case '10':
                 return 10;
-            case 'В':
+            case 'Валет':
                 return 11;
-            case 'Д':
+            case 'Дама':
                 return 12;
-            case 'К':
+            case 'Король':
                 return 13;
-            case 'Т':
+            case 'Туз':
                 return 14;
+            default:
+                throw new Error('Карта не соответсвует ни одному рангу!!!');
         }
     }
+    equals(otherCard) {
+        if (this.rank === otherCard.rank && this.suit === otherCard.suit) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    /// Доделать методы проверки равенства карт
 }
