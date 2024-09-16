@@ -24,7 +24,7 @@ export class Deck {
     };
     // Раздача карт
     dealingСards(players, cards) {
-        if (this.deck.length < players * cards) {
+        if (this.deck.length < players.length * cards) {
             throw new Error('There are not enough cards in the deck to play Durak-game!!')
         };
         for (let i = 0; i < players.length; i++) {

@@ -40,7 +40,7 @@ export class Card {
             return false;
         }
     }
-    // Проверка козыря
+    // Является ли карта козырем
     isTrump(trumpSuit) {
         return this.suit === trumpSuit;
     }

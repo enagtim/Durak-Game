@@ -1,6 +1,34 @@
 (function () {
     'use strict';
 
+    class Game {
+        constructor(players, deck, trumpSuit) {
+            this.players = players;
+            this.deck = deck;
+            this.trumpSuit = trumpSuit;
+        };
+        // Начало игры
+        startGame() {
+            this.deck.createDeck();
+            this.deck.shuffleDeck();
+            this.deck.dealingСards(this.players, 6);
+
+            // Добавить правила игры
+        };
+        // Проверка типа козыря
+        checkTrumpSuit() {
+            return this.trumpSuit;
+        };
+        /*  
+            Реализовать: 
+            takeTurn(player, card) — организует ход игрока(атака/защита).
+            determineWinner() — проверяет, есть ли победитель.
+            attack(player, card) — игрок атакует выбранной картой.
+            defend(player, card) — игрок защищается картой.
+            endGame() — завершает игру, проверяет, кто победил или проиграл.
+        */
+    }
+
     class Player {
         constructor(name) {
             this.name = name;
@@ -91,7 +119,7 @@
                 return false;
             }
         }
-        // Проверка козыря
+        // Является ли карта козырем
         isTrump(trumpSuit) {
             return this.suit === trumpSuit;
         }
@@ -122,7 +150,7 @@
         };
         // Раздача карт
         dealingСards(players, cards) {
-            if (this.deck.length < players * cards) {
+            if (this.deck.length < players.length * cards) {
                 throw new Error('There are not enough cards in the deck to play Durak-game!!')
             }        for (let i = 0; i < players.length; i++) {
                 for (let j = 0; j < cards; j++) {
@@ -142,28 +170,13 @@
         }
     }
 
+    const players = [new Player('Tom'), new Player('Alex'), new Player('Leonardo')];
     const deck = new Deck();
-    console.log(deck.createDeck());
-    deck.shuffleDeck();
-    deck.shuffleDeck();
-    deck.shuffleDeck();
-    deck.shuffleDeck();
-    deck.shuffleDeck();
+    const trumpSuit = 'Bubi';
 
-    const players = [new Player('Harry'), new Player('Alex'), new Player('Tom')];
-    players[0].addCardHand({ rank: 'Валет', suit: 'Пики' });
-    players[0].addCardHand({ rank: '7', suit: 'Крести' });
-    players[1].addCardHand({ rank: 'Король', suit: 'Черви' });
-    players[1].addCardHand({ rank: 'Туз', suit: 'Буби' });
-    players[2].addCardHand({ rank: 'Дама', suit: 'Пики' });
-    players[2].addCardHand({ rank: '6', suit: 'Черви' });
+    const game$1 = new Game(players, deck, trumpSuit);
+    game$1.startGame();
 
-    console.log(players);
-    console.log(players[1].checkHasCard({ rank: 'Король', suit: 'Черви' }));
-    console.log(players[1].getCard());
-
-    const card = players[2].hand[0];
-    const card2 = new Card('Дама', 'Пики');
-    console.log(card2.equals(card));
+    console.log(game$1);
 
 })();
