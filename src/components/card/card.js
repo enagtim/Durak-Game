@@ -3,9 +3,11 @@ export class Card {
         this.rank = rank
         this.suit = suit
     }
+    // Получить ранк
     getRank() {
         return this.rank;
     }
+    // Получить значение ранка
     getValueRank() {
         switch (this.rank) {
             case '6':
@@ -18,18 +20,19 @@ export class Card {
                 return 9;
             case '10':
                 return 10;
-            case 'Валет':
+            case 'Jack':
                 return 11;
-            case 'Дама':
+            case 'Queen':
                 return 12;
-            case 'Король':
+            case 'King':
                 return 13;
-            case 'Туз':
+            case 'Ace':
                 return 14;
             default:
-                throw new Error('Карта не соответсвует ни одному рангу!!!');
+                throw new Error('The card does not correspond to any rank!!!');
         }
     }
+    // Проверка равенства карт
     equals(otherCard) {
         if (this.rank === otherCard.rank && this.suit === otherCard.suit) {
             return true;
@@ -37,5 +40,8 @@ export class Card {
             return false;
         }
     }
-    /// Доделать методы проверки равенства карт
+    // Проверка козыря
+    isTrump(trumpSuit) {
+        return this.suit === trumpSuit;
+    }
 }

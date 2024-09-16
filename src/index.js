@@ -1,6 +1,7 @@
 import { Player } from "./components/player/player";
 import { Card } from "./components/card/card";
 import { Deck } from "./components/deck/deck";
+import { Game } from "./components/game/game";
 
 const deck = new Deck();
 console.log(deck.createDeck());
@@ -17,10 +18,13 @@ players[1].addCardHand({ rank: 'Король', suit: 'Черви' })
 players[1].addCardHand({ rank: 'Туз', suit: 'Буби' })
 players[2].addCardHand({ rank: 'Дама', suit: 'Пики' })
 players[2].addCardHand({ rank: '6', suit: 'Черви' })
-players[0].deleteCard({ rank: 'Валет', suit: 'Пики' });
+
 console.log(players);
 console.log(players[1].checkHasCard({ rank: 'Король', suit: 'Черви' }));
 console.log(players[1].getCard());
-// console.log(players[2].hand.equals({ rank: 'Дама', suit: 'Пики' }));
-console.log(players[1].hand);
+
+const card = players[2].hand[0];
+const card2 = new Card('Дама', 'Пики');
+console.log(card2.equals(card));
+
 

@@ -1,10 +1,11 @@
 import { Card } from "../card/card";
 export class Deck {
     constructor() {
-        this.suits = ['Черви', 'Буби', 'Пики', 'Крести'];
-        this.ranks = ['6', '7', '8', '9', '10', 'Валет', 'Дама', 'Король', 'Туз'];
+        this.suits = ['Hearts', 'Bubi', 'Spades', 'Crossie'];
+        this.ranks = ['6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
         this.deck = [];
     };
+    // Создание колоды
     createDeck() {
         for (const suit of this.suits) {
             for (const rank of this.ranks) {
@@ -13,6 +14,7 @@ export class Deck {
         }
         return this.deck;
     };
+    // Перемешивание колоды
     shuffleDeck() {
         for (let i = this.deck.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -20,17 +22,25 @@ export class Deck {
         }
         return this.deck;
     };
-    dealingСards(numPlayers, numCards) {
-        if (this.deck.length < numPlayers * numCards) {
-            throw new Error('В колоде недостаточно карт для игры в Дурака!!')
+    // Раздача карт
+    dealingСards(players, cards) {
+        if (this.deck.length < players * cards) {
+            throw new Error('There are not enough cards in the deck to play Durak-game!!')
         };
-        const players = [];
-        for (let i = 0; i < numPlayers; i++) {
-            for (let j = 0; i < numCards; j++) {
-                const card = this.deck.pop();
-                players.push(card)
+        for (let i = 0; i < players.length; i++) {
+            for (let j = 0; j < cards; j++) {
+                const card = this.deck.shift();
+                players[i].addCardHand(card);
             }
         }
-        return players;
+    };
+    // Взять одну карту из колоды
+    drowCard() {
+        if (this.deck.length > 0) {
+            const card = this.deck.shift();
+            return card;
+        } else {
+            throw Error('Deck is not have cards!');
+        }
     }
 }
